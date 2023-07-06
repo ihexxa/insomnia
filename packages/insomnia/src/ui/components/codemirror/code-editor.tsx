@@ -562,26 +562,29 @@ export const CodeEditor = forwardRef<CodeEditorHandle, CodeEditorProps>(({
                     </DropdownButton>
                   }
                 >
-                  {filterHistory.reverse().map(filter => (
-                    <DropdownItem
-                      key={filter}
-                      aria-label={filter}
-                    >
-                      <ItemContent
-                        aria-label={filter}
-                        label={filter}
-                        onClick={() => {
-                          if (inputRef.current) {
-                            inputRef.current.value = filter;
-                          }
-                          if (updateFilter) {
-                            updateFilter(filter);
-                          }
-                          maybePrettifyAndSetValue(originalCode, false, filter);
-                        }}
-                      />
-                    </DropdownItem>
-                  ))}
+                  {filterHistory.reverse().map((filter: string, i: number) => {
+                    const key = `JSON Path Filter ${i}`;
+                    return (
+                      <DropdownItem
+                        key={key}
+                        aria-label={key}
+                      >
+                        <ItemContent
+                          aria-label={`${key} Content`}
+                          label={filter}
+                          onClick={() => {
+                            if (inputRef.current) {
+                              inputRef.current.value = filter;
+                            }
+                            if (updateFilter) {
+                              updateFilter(filter);
+                            }
+                            maybePrettifyAndSetValue(originalCode, false, filter);
+                          }}
+                        />
+                      </DropdownItem>
+                    )
+                  })}
                 </Dropdown>
               )) : null}
             {showFilter ?
