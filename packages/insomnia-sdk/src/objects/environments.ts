@@ -54,6 +54,24 @@ function mergeFolderLevelVars(folderLevelVars: Environment[]) {
     return new Environment('mergedFolderLevelVars', mergedFolderLevelObject);
 }
 
+/**
+ * The `Variables` class is responsible for managing and interacting with multiple levels of variables
+ * in a hierarchical structure. It provides methods to check for the existence of variables, retrieve
+ * their values, set new values, and replace placeholders in templates with variable values.
+ *
+ * The variable levels include:
+ * - Global variables
+ * - Collection-level variables
+ * - Environment-level variables
+ * - Iteration data variables
+ * - Folder-level variables (an array of environments)
+ * - Local variables
+ *
+ * @remarks
+ * This class assumes that each level of variables is represented by an `Environment` object,
+ * which must implement methods like `has`, `get`, `set`, and `toObject`.
+ *
+ */
 export class Variables {
     // TODO: support vars for all levels
     private globalVars: Environment;
@@ -81,6 +99,20 @@ export class Variables {
         this.localVars = args.localVars;
     }
 
+    /**
+     * Checks if a variable with the specified name exists in any of the variable scopes.
+     *
+     * The method searches through the following scopes in order:
+     * - Global variables
+     * - Collection variables
+     * - Environment variables
+     * - Iteration data variables
+     * - Folder-level variables
+     * - Local variables
+     *
+     * @param variableName - The name of the variable to check for existence.
+     * @returns `true` if the variable exists in any of the scopes, otherwise `false`.
+     */
     has = (variableName: string) => {
         const globalVarsHas = this.globalVars.has(variableName);
         const collectionVarsHas = this.collectionVars.has(variableName);

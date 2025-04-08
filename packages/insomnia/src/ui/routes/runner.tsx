@@ -149,19 +149,19 @@ export const Runner: FC<{}> = () => {
       setDirection('vertical');
       return () => { };
     }
-      // Listen on media query changes
-      const mediaQuery = window.matchMedia('(max-width: 880px)');
-      setDirection(mediaQuery.matches ? 'vertical' : 'horizontal');
+    // Listen on media query changes
+    const mediaQuery = window.matchMedia('(max-width: 880px)');
+    setDirection(mediaQuery.matches ? 'vertical' : 'horizontal');
 
-      const handleChange = (e: MediaQueryListEvent) => {
-        setDirection(e.matches ? 'vertical' : 'horizontal');
-      };
+    const handleChange = (e: MediaQueryListEvent) => {
+      setDirection(e.matches ? 'vertical' : 'horizontal');
+    };
 
-      mediaQuery.addEventListener('change', handleChange);
+    mediaQuery.addEventListener('change', handleChange);
 
-      return () => {
-        mediaQuery.removeEventListener('change', handleChange);
-      };
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
 
   }, [settings.forceVerticalLayout, direction]);
 
@@ -762,7 +762,7 @@ export default Runner;
 const RequestItem = (
   { children, ...props }: GridListItemProps
 ) => {
-
+  const reactNodeChildren = children as React.ReactNode;
   return (
     <GridListItem {...props}>
       {() => (
@@ -780,7 +780,7 @@ const RequestItem = (
               </>;
             }}
           </Checkbox>
-          {children}
+          {reactNodeChildren}
         </>
       )}
     </GridListItem>

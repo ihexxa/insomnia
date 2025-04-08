@@ -12,7 +12,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kong/insomnia.git",
-    "directory": "packages/insomnia-testing"
+    "directory": "packages/insomnia-sdk"
   },
   "author": "Kong <office@konghq.com>",
   "license": "Apache-2.0",

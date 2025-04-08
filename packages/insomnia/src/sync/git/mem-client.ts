@@ -109,7 +109,7 @@ export class MemClient {
     if (encoding) {
       return raw.toString(encoding);
     }
-      return raw;
+    return raw;
 
   }
 
@@ -153,7 +153,7 @@ export class MemClient {
       dirEntry.children.push(file);
     }
 
-    const dataBuff: Buffer = data instanceof Buffer ? data : Buffer.from(data, encoding);
+    const dataBuff: Buffer = data instanceof Buffer ? data : Buffer.from(data as string, encoding);
     let newContents = Buffer.alloc(0);
 
     if (flag[0] === 'w') {

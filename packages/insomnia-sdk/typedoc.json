@@ -1,0 +1,11 @@
+{
+  "entryPoints": [
+    "./src/objects/*.ts"
+  ],
+  "excludeExternals": true,
+  "name": "Insomnia-SDK",
+  "projectDocuments": [
+    "README.md"
+  ],
+  "includeVersion": false
+}
