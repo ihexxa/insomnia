@@ -598,7 +598,7 @@ export const sendActionImplementation = async (options: {
       response: {
         _id: requestData.responseId,
         parentId: requestId,
-        environemntId: requestData.environment,
+        environmentId: requestData.environment._id,
         statusMessage: 'Error',
         error: mutatedContext.error,
       },
@@ -613,7 +613,7 @@ export const sendActionImplementation = async (options: {
     const responsePatch = {
       _id: responseId,
       parentId: requestId,
-      environemntId: requestData.environment,
+      environmentId: requestData.environment._id,
       statusMessage: 'Cancelled',
       error: 'Request was cancelled by pre-request script',
     };
